@@ -13,39 +13,43 @@ import { Ionicons } from '@expo/vector-icons';
 
 const wardrobeData = {
   Tişört: [
-    'https://i.imgur.com/BZkz2Nn.jpg',
-    'https://i.imgur.com/z4d4kWk.jpg',
+    require('../assets/defaults/thirt1.jpg'),
+    require('../assets/defaults/tshirt2.jpeg'),
   ],
   Pantolon: [
-    'https://i.imgur.com/2nCt3Sbl.jpg',
-    'https://i.imgur.com/5EOyTDQ.jpg',
+    require('../assets/defaults/kiyafet1.jpg'),
+    require('../assets/defaults/pants.jpg'),
   ],
   Etek: [
-    'https://i.imgur.com/jbC9Zgn.jpg',
-    'https://i.imgur.com/XbHheJr.jpg',
-  ],
+    require('../assets/defaults/etek1.jpg'),
+    require('../assets/defaults/etek2.jpg'),
+  ],  
 };
 
 export default function ProfileScreen() {
   const [expanded, setExpanded] = useState({});
 
   const toggleCategory = (category) => {
-    setExpanded((prev) => ({
-      ...prev,
-      [category]: !prev[category],
-    }));
+    setExpanded((prev) => {
+      // Eğer zaten açık olan kategoriye tıklanırsa kapat, değilse sadece onu aç
+      if (prev[category]) {
+        return { ...prev, [category]: false };
+      } else {
+        return { ...prev, [category]: true };
+      }
+    });
   };
 
   return (
     <ScrollView style={styles.container}>
       {/* Profil Başlığı */}
-      <View style={styles.header}>
+      <View style={[styles.header, { marginTop: 40 }]}>
         <Image
           source={{ uri: 'https://i.pravatar.cc/300' }}
           style={styles.avatar}
         />
         <View style={styles.info}>
-          <Text style={styles.username}>kuzan_dev</Text>
+          <Text style={styles.username}>Melike</Text>
           <Text style={styles.bio}>Modaya yön veren 👑</Text>
         </View>
       </View>
@@ -70,7 +74,7 @@ export default function ProfileScreen() {
               keyExtractor={(item, index) => index.toString()}
               numColumns={3}
               renderItem={({ item }) => (
-                <Image source={{ uri: item }} style={styles.wardrobeImage} />
+                <Image source={item} style={styles.wardrobeImage} />
               )}
             />
           )}

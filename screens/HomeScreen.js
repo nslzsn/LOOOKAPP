@@ -4,20 +4,20 @@ import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 const mockPosts = [
   {
     id: '1',
-    username: 'Nesli',
-    imageUrl: 'https://i.imgur.com/BZkz2Nn.jpg',
+    username: 'Melike',
+    imageUrl: require('../assets/defaults/melike.jpg'),
     likes: 182,
   },
   {
     id: '2',
     username: 'Elif',
-    imageUrl: 'https://i.imgur.com/z4d4kWk.jpg',
+    imageUrl: require('../assets/defaults/portrait-young-stylish-girl-model-casual-summer-clothes-brown-hat-with-natural-makeup-glasses-isolated.jpg'),
     likes: 95,
   },
   {
     id: '3',
     username: 'Mert',
-    imageUrl: 'https://i.imgur.com/2nCt3Sbl.jpg',
+    imageUrl: require('../assets/defaults/high-fashion-look-young-stylish-confident-happy-handsome-businessman-model-suit-cloth-lifestyle-street-sunglasses-look-his-watch.jpg'),
     likes: 203,
   },
 ];
@@ -25,7 +25,7 @@ const mockPosts = [
 export default function HomeScreen() {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={{ uri: item.imageUrl }} style={styles.image} />
+      <Image source={item.imageUrl} style={styles.image} />
       <View style={styles.info}>
         <Text style={styles.username}>{item.username}</Text>
         <Text style={styles.likes}>❤️ {item.likes}</Text>
@@ -35,8 +35,8 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>LOOK</Text>
+      <View style={[styles.header, { marginTop: 40 }]}>
+        <Text style={styles.headerText}>LoooK</Text>
       </View>
       <FlatList
         data={mockPosts}

@@ -2,10 +2,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { Image } from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
 import ExploreScreen from './screens/ExploreScreen';
-import AiScreen from './screens/AiScreen';
+import AiVibeScreen from './screens/AiVibeScreen';
 import QrScreen from './screens/QrScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
@@ -31,10 +32,16 @@ export default function App() {
           tabBarActiveTintColor: '#7c1e1e',
           tabBarInactiveTintColor: 'gray',
         })}
+        initialRouteName="Home"
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <Image source={require('./assets/defaults/giris.jpg')} style={{ width: 28, height: 28, borderRadius: 8 }} />
+          ),
+        }} />
         <Tab.Screen name="Explore" component={ExploreScreen} />
-        <Tab.Screen name="AI" component={AiScreen} />
+        <Tab.Screen name="AI" component={AiVibeScreen} />
         <Tab.Screen name="QR" component={QrScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>

@@ -12,10 +12,10 @@ import {
 const { width, height } = Dimensions.get('window');
 
 const mockImages = [
-  { id: '1', uri: 'https://i.imgur.com/BZkz2Nn.jpg' },
-  { id: '2', uri: 'https://i.imgur.com/z4d4kWk.jpg' },
-  { id: '3', uri: 'https://i.imgur.com/2nCt3Sbl.jpg' },
-  { id: '4', uri: 'https://i.imgur.com/5EOyTDQ.jpg' },
+  { id: '1', uri: require('../assets/defaults/yeni1.jpg') },
+  { id: '2', uri: require('../assets/defaults/yeni2.jpg') },
+  { id: '3', uri: require('../assets/defaults/yeni3.jpg') },
+  { id: '4', uri: require('../assets/defaults/yeni4.jpg') },
 ];
 
 export default function SwipeGallery() {
@@ -75,7 +75,7 @@ export default function SwipeGallery() {
       {...panResponder.panHandlers}
     >
       <Animated.Image
-        source={{ uri: mockImages[index].uri }}
+        source={mockImages[index].uri}
         style={[styles.image, { transform: [{ rotate }, ...position.getTranslateTransform()] }]}
       />
     </Animated.View>
